@@ -5,7 +5,12 @@ using System.Threading.Tasks;
 
 namespace AuctionsApp.DAL
 {
-    public class IBidRepo
+    public interface IBidRepo
     {
+        public Task<IEnumerable<FinalBid>> ListBids(string bidNev = null);
+        public Task<FinalBid> GetBidOrNull(int bidID);
+        public Task DeleteBid(int bidID);
+        public Task ModifyBid(int bidID, FinalBid modositott);
+        public Task CreateBid(FinalBid uj);
     }
 }

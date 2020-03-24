@@ -14,7 +14,7 @@ namespace AuctionsApp.Models
         public int AuctionID { get; set; }
         public Auction Auction { get; set; }
         
-        public int PersonID { get; set; }
+        //public int PersonID { get; set; }
         [NotMapped]
         public Person Person { get; set; }
     }

@@ -8,16 +8,14 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Button from "react-bootstrap/Button";
 
-
-
 let deflist : any[] =[
     {id: "", name: "hello ", descpription: " ", personid: ""},
 ];
 
 
-function ThingList(){
+function AuctionList(){
     const [data, setData] = useState(deflist);
-    const [url, setUrl] = useState('https://localhost:5001/api/thing',);
+    const [url, setUrl] = useState('https://localhost:5001/api/auction',);
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
 
@@ -49,12 +47,11 @@ function ThingList(){
             <Row>
               <Col>
                <Card bg='light'>
-                 <Card.Title>{item.name}</Card.Title>
-               <Card.Body>{item.desccription}</Card.Body>
+                 <Card.Title>{item.thingName}</Card.Title>
+               <Card.Body>{item.thingDescription}</Card.Body>
                <Card.Footer >
-                 <Button variant="primary">Modositas</Button>{' '}
-                 <Button variant="primary">Torles</Button>{'  '}
-                 <Button variant="primary">Aukcio letrehozasa</Button>
+                Actual price: {item.actualPrice                       }
+                <Button variant="primary">Bid</Button>
                </Card.Footer>
                </Card>
               </Col>
@@ -66,12 +63,11 @@ function ThingList(){
   );
 }
 
-export default function Things(){
+export default function Auctions(){
     return(
-        <div>  
-            <ThingList/>
+        <div>
+            <AuctionList />
         </div>
     )
 }
-
 

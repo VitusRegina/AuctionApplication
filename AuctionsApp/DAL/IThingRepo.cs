@@ -13,6 +13,6 @@ namespace AuctionsApp.DAL
         public Task DeleteThing(int thingID);
         public Task ModifyThing(int thingID, FinalThing modositott);
 
-        public Task CreateThing(FinalThing modositott);
+        public Task CreateThing(FinalThing uj);
     }
 }

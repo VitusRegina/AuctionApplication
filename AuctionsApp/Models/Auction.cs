@@ -15,7 +15,7 @@ namespace AuctionsApp.Models
         public DateTime? EndTime { get; set; }
         public Boolean? Sikeres { get; set; }
         public int ThingID { get; set; }
-        public Thing Thing { get; set; }
+        public Thing? Thing { get; set; }
        // [NotMapped]
         //public List<Bid> Bids { get; set; }
 

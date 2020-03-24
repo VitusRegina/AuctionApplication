@@ -35,6 +35,10 @@ namespace AuctionsApp
 
             services.AddTransient<IThingRepo, ThingRepo>();
             services.AddTransient<ThingManager, ThingManager>();
+            services.AddTransient<IAuctionRepo, AuctionRepo>();
+            services.AddTransient<AuctionManager, AuctionManager>();
+            services.AddTransient<IBidRepo, BidRepo>();
+            services.AddTransient<BidManager, BidManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
