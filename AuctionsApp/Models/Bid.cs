@@ -12,7 +12,7 @@ namespace AuctionsApp.Models
         public int ID { get; set; }
         public int Sum { get; set; }
         public int AuctionID { get; set; }
-        public Auction Auction { get; set; }
+        public Auction? Auction { get; set; }
         
         //public int PersonID { get; set; }
         [NotMapped]

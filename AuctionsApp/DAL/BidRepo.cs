@@ -24,7 +24,11 @@ namespace AuctionsApp.DAL
 
         public async Task<IEnumerable<FinalBid>> ListBids(string bidNev = null) => await db.Bids.Select(b => b.GetFinalBid()).ToListAsync();
 
-
+        public async Task<IEnumerable<FinalBid>> SelectBid(int aucID)
+        {
+            var bid = await db.Bids.Where(b => b.AuctionID == aucID).OrderBy(b => b.Sum).Select(bid => bid.GetFinalBid()).ToListAsync();
+            return bid;
+        }
         public async Task DeleteBid(int bidID)
         {
             var bid = await db.Bids.FindAsync(bidID);
@@ -36,6 +40,7 @@ namespace AuctionsApp.DAL
         {
             Bid bid = await db.Bids.FindAsync(bidID);
             bid.Sum = modositott.Sum;
+            bid.AuctionID = modositott.AuctionID;
             db.SaveChanges();
         }
 
@@ -43,7 +48,7 @@ namespace AuctionsApp.DAL
         {
             Bid bid = new Bid();
             bid.Sum = uj.Sum;
-            bid.AuctionID = 1;
+            bid.AuctionID = uj.AuctionID;
             db.Bids.Add(bid);
             db.SaveChanges();
         }
@@ -53,7 +58,7 @@ namespace AuctionsApp.DAL
     {
         public static FinalBid GetFinalBid(this Bid b)
         {
-            return new FinalBid(b.ID, b.Sum);
+            return new FinalBid(b.ID, b.Sum,b.AuctionID);
         }
     }
 }

@@ -60,10 +60,8 @@ namespace AuctionsApp
 
             app.UseAuthorization();
 
-            app.UseCors(builder =>
-            {
-                builder.WithOrigins("http://localhost:3000");
-            });
+           
+            app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseEndpoints(endpoints =>
             {

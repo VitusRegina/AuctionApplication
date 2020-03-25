@@ -26,16 +26,17 @@ namespace AuctionsApp.Controllers
             return data;
         }
 
-        [HttpGet("{bidID}")]
+        [HttpGet("{aucID}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
-        public async Task<ActionResult<FinalBid>> Get(int bidID)
+        public async Task<IEnumerable<FinalBid>> Get(int aucID)
         {
-            var bid = await _bm.getBidOrNull(bidID);
-            if (bid == null)
-                return NotFound();
-            else return bid;
-
+            /*  var bid = await _bm.getBidOrNull(bidID);
+              if (bid == null)
+                  return NotFound();
+              else return bid;*/
+            var data = await _bm.SelectBids(aucID);
+            return data;
         }
 
         [HttpPut("{bidID}")]

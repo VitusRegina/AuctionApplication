@@ -19,10 +19,11 @@ namespace AuctionsApp.DAL
         public async Task<FinalAuction> GetAuctionOrNull(int aucID)
         {
             var auc = await db.Auctions.FindAsync(aucID);
-            Thing thing =  db.Things.Where(t => t.ID == auc.ThingID).FirstOrDefault();
-            int b = db.Bids.Max(b => b.Sum);
+            Thing thing = db.Things.Where(t => t.ID == auc.ThingID).FirstOrDefault();
+            int b = db.Bids.Where(bid => bid.AuctionID == auc.ID).Max(b => b.Sum);
             return auc?.GetFinalAuction(thing,b);
         }
+        //.Where(bid => bid.AuctionID== auc.ID)
 
         public async Task<IEnumerable<FinalAuction>> ListAuctions()
         {
@@ -31,7 +32,7 @@ namespace AuctionsApp.DAL
             foreach(var auc in list)
             {
                 Thing thing = db.Things.Where(t => t.ID == auc.ThingID).FirstOrDefault();
-                int b = db.Bids.Max(b => b.Sum);
+                int b = db.Bids.Where(bid => bid.AuctionID == auc.ID).Max(b => b.Sum);
                 finallist.Add(auc?.GetFinalAuction(thing, b));
             }
             return finallist;
@@ -59,6 +60,9 @@ namespace AuctionsApp.DAL
             auc.Startprice = uj.Startprice;
             auc.ThingID = uj.ThingID;
             db.Auctions.Add(auc);
+            Bid bid = new Bid();
+            bid.Sum = auc.Startprice;
+            bid.AuctionID = auc.ID;
             db.SaveChanges();
         }
     }

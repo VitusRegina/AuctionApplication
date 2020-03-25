@@ -17,6 +17,8 @@ namespace AuctionsApp.BL
 
         public async Task<FinalBid> getBidOrNull(int bidID) => await bidRepo.GetBidOrNull(bidID);
 
+        public async Task<IEnumerable<FinalBid>> SelectBids(int aucID) => await bidRepo.SelectBid(aucID);
+
         public async Task<bool> TryTorolBid(int bidID)
         {
             await bidRepo.DeleteBid(bidID);

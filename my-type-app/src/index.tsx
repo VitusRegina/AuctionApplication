@@ -3,8 +3,8 @@ import ReactDOM from "react-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './Home';
 import Auctions from './Auctions';
-import Chat from './Chat';
-import ThingRouter from './ThingRouter'
+import Things from './Things';
+import ThingCreate from './ThingCreate'
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import {
@@ -30,6 +30,9 @@ import {
                 <Nav.Link href="#link">
                     <Link to="/things">Things</Link>  
                 </Nav.Link>
+                <Nav.Link href="#link">
+                    <Link to="/thingcreate">Create thing</Link>  
+                </Nav.Link>
                 
           </Nav>   
       </Navbar>
@@ -42,10 +45,10 @@ import {
             <Auctions />
           </Route>
           <Route path="/things">
-            <ThingRouter />
+            <Things />
           </Route>
-          <Route path="/chat">
-            <Chat />
+          <Route path="/thingcreate">
+            <ThingCreate />
           </Route>
         </Switch>
       </div>

@@ -9,13 +9,16 @@ namespace AuctionsApp.DAL
     {
         public FinalBid() { }
 
-        public FinalBid(int id, int s)
+        public FinalBid(int id, int s,int a)
         {
             ID = id;
             Sum = s;
+            AuctionID = a;
         }
 
         public int ID { get; set; }
         public int Sum { get; set; }
+
+        public int AuctionID {get; set;}
     }
 }
